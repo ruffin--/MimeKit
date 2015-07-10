@@ -666,6 +666,7 @@ namespace MimeKit {
 			return (*qword & FromMask) == From;
 #else
 			byte* inptr = text;
+            //MimeParser.GetWhatsNext(inptr, 50, 10);
 
 			return *inptr++ == (byte) 'F' && *inptr++ == (byte) 'r' && *inptr++ == (byte) 'o' && *inptr++ == (byte) 'm' && *inptr == (byte) ' ';
 #endif
@@ -673,6 +674,8 @@ namespace MimeKit {
 
 		unsafe void StepMboxMarker (byte* inbuf)
 		{
+
+
 			bool complete = false;
 			bool needInput;
 			int left = 0;
@@ -1064,8 +1067,14 @@ namespace MimeKit {
 			if (*text == (byte) '-' && *(text + 1) == (byte) '-')
 				return true;
 
-			if (format == MimeFormat.Mbox && length >= 5 && IsMboxMarker (text))
+			if (format == MimeFormat.Mbox && length >= 5 && IsMboxMarker (text) && 1 == this.bounds.Count)
+            {
+                GetWhatsNext(text, 20, 20);
+                System.Diagnostics.Debug.Print("Found what appears to be an mbox marker: " 
+                    + bounds.Count + " "
+                    + System.Text.Encoding.UTF8.GetString(bounds[0].Marker));
 				return true;
+            }
 
 			return false;
 		}
@@ -1660,5 +1669,59 @@ namespace MimeKit {
 		}
 
 		#endregion
+
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // Jive I've added -RUF
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public static unsafe void GetWhatsNext(byte* inptr, int intCharsAhead, int intCharsBehind = 0)
+        {
+            string strAddys = string.Empty;
+            string strVals = string.Empty;
+            string strCharsClose = string.Empty;
+            string strChars = string.Empty;
+
+            try
+            {
+                // I think, as long as we don't pass the physical RAM's
+                // max address, we're fine incrementing.
+                for (int i=-1 * intCharsBehind; i<intCharsAhead; i++)
+                {
+                    byte* ptrTest = (inptr+i);
+                    strAddys += (int)(ptrTest) + " :: ";
+                    byte bytVal = *ptrTest;
+                    strVals += (bytVal).ToString().PadRight(((int)(ptrTest)).ToString().Length + 4);
+                    char chr = (bytVal > 31 && bytVal < 127) ? (char)bytVal : '?';
+                    strCharsClose += chr;
+                    strChars += chr.ToString().PadRight(((int)(ptrTest)).ToString().Length + 4);
+                }
+            }
+            catch (Exception)
+            {
+                strAddys += "ERROR";
+                strVals += "ERROR";
+                strChars += "ERROR";
+            }
+
+            string strMsg = strAddys + "\n"
+                + strVals + "\n"
+                + strChars + "\n"
+                + strCharsClose;
+
+            // for now, just the chars, boss.
+            strMsg = strCharsClose;
+
+            System.Diagnostics.Debug.Print(strMsg);
+            Console.WriteLine(strMsg);
+
+//            if (strCharsClose.Substring(10).StartsWith("From "))
+//            {
+//                System.Diagnostics.Debugger.Break();
+//            }
+        }
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // eo jive I've added -RUF
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	}
 }
+
+

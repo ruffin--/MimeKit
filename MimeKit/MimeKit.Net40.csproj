@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C909FC86-6084-41E5-B99C-DCDF2A5B7F82}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -48,12 +46,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Security" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\bc-csharp\crypto\BouncyCastle.csproj">
-      <Project>{4C235092-820C-4DEB-9074-D356FB797D8B}</Project>
-      <Name>BouncyCastle</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography\ApplicationPgpEncrypted.cs" />
@@ -268,4 +260,10 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\..\bc-csharp\crypto\BouncyCastle.csproj">
+      <Project>{4C235092-820C-4DEB-9074-D356FB797D8B}</Project>
+      <Name>BouncyCastle</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
