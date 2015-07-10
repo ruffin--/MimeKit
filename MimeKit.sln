@@ -15,13 +15,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimeKit.iOS", "MimeKit\Mime
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimeKit.Portable", "MimeKit\MimeKit.Portable.csproj", "{BE542CE1-F773-467E-8DED-D02B89C5040A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle", "..\bc-csharp\crypto\BouncyCastle.csproj", "{4C235092-820C-4DEB-9074-D356FB797D8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle", "submodules\bc-csharp\crypto\BouncyCastle.csproj", "{4C235092-820C-4DEB-9074-D356FB797D8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle.Android", "..\bc-csharp\crypto\BouncyCastle.Android.csproj", "{A0D302CB-8866-4AB1-98B9-F0772EABF5DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle.Android", "submodules\bc-csharp\crypto\BouncyCastle.Android.csproj", "{A0D302CB-8866-4AB1-98B9-F0772EABF5DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle.iOS", "..\bc-csharp\crypto\BouncyCastle.iOS.csproj", "{0249241C-205E-4AC0-828B-90F822359B9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BouncyCastle.iOS", "submodules\bc-csharp\crypto\BouncyCastle.iOS.csproj", "{0249241C-205E-4AC0-828B-90F822359B9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Data.Sqlite", "Mono.Data.Sqlite\Mono.Data.Sqlite.csproj", "{F26434C1-BA3D-41FB-B560-C009CB72B1B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portable.Text.Encoding", "submodules\Portable.Text.Encoding\Portable.Text.Encoding\Portable.Text.Encoding.csproj", "{EEE48C75-11BE-4B50-B759-F85B5052D473}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portable.Text.Encoding.WindowsUniversal81", "submodules\Portable.Text.Encoding\Portable.Text.Encoding\Portable.Text.Encoding.WindowsUniversal81.csproj", "{B76A64F9-B00E-4243-AE89-5D024CA3B436}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimeKit.WindowsUniversal81", "MimeKit\MimeKit.WindowsUniversal81.csproj", "{D9906B8C-7BBD-4CCE-AC7C-E9BCA020D20C}"
 EndProject
@@ -57,6 +61,10 @@ Global
 		{A0D302CB-8866-4AB1-98B9-F0772EABF5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0D302CB-8866-4AB1-98B9-F0772EABF5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0D302CB-8866-4AB1-98B9-F0772EABF5DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76A64F9-B00E-4243-AE89-5D024CA3B436}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76A64F9-B00E-4243-AE89-5D024CA3B436}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76A64F9-B00E-4243-AE89-5D024CA3B436}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76A64F9-B00E-4243-AE89-5D024CA3B436}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE542CE1-F773-467E-8DED-D02B89C5040A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BE542CE1-F773-467E-8DED-D02B89C5040A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE542CE1-F773-467E-8DED-D02B89C5040A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +85,10 @@ Global
 		{D9906B8C-7BBD-4CCE-AC7C-E9BCA020D20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9906B8C-7BBD-4CCE-AC7C-E9BCA020D20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9906B8C-7BBD-4CCE-AC7C-E9BCA020D20C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE48C75-11BE-4B50-B759-F85B5052D473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE48C75-11BE-4B50-B759-F85B5052D473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE48C75-11BE-4B50-B759-F85B5052D473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE48C75-11BE-4B50-B759-F85B5052D473}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F26434C1-BA3D-41FB-B560-C009CB72B1B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F26434C1-BA3D-41FB-B560-C009CB72B1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F26434C1-BA3D-41FB-B560-C009CB72B1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -96,17 +108,14 @@ Global
 		$3.inheritsSet = null
 		$3.scope = text/x-csharp
 		$0.CSharpFormattingPolicy = $4
-		$4.IndentPreprocessorDirectives = False
 		$4.NamespaceBraceStyle = EndOfLine
 		$4.StructBraceStyle = EndOfLine
 		$4.EnumBraceStyle = EndOfLine
-		$4.BeforeIndexerDeclarationBracket = False
 		$4.AfterDelegateDeclarationParameterComma = True
 		$4.BeforeSizeOfParentheses = True
 		$4.BeforeTypeOfParentheses = True
 		$4.SpacesBeforeBrackets = False
 		$4.SpacesAfterTypecast = True
-		$4.BlankLinesBeforeUsings = 1
 		$4.inheritsSet = Mono
 		$4.inheritsScope = text/x-csharp
 		$4.scope = text/x-csharp

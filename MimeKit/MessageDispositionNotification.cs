@@ -33,8 +33,9 @@ namespace MimeKit {
 	/// A message disposition notification MIME part.
 	/// </summary>
 	/// <remarks>
-	/// A message disposition notification MIME part is a machine readable notification denoting the
-	/// delivery status of a previously sent message.
+	/// A message disposition notification MIME part is a machine readable notification
+	/// denoting the disposition of a message once it has been successfully delivered 
+	/// and has a MIME-type of message/disposition-notification.
 	/// </remarks>
 	public class MessageDispositionNotification : MimePart
 	{
@@ -96,7 +97,6 @@ namespace MimeKit {
 			var options = FormatOptions.Default;
 
 			fields.WriteTo (options, stream);
-			stream.Write (options.NewLineBytes, 0, options.NewLineBytes.Length);
 			stream.Position = 0;
 
 			ContentObject = new ContentObject (stream);

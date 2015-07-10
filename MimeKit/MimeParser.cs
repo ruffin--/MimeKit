@@ -110,7 +110,6 @@ namespace MimeKit {
 	/// </remarks>
 	public class MimeParser : IEnumerable<MimeMessage>
 	{
-		static readonly StringComparer icase = StringComparer.OrdinalIgnoreCase;
 		const int ReadAheadSize = 128;
 		const int BlockSize = 4096;
 		const int PadSize = 4;
@@ -1044,7 +1043,7 @@ namespace MimeKit {
 			ContentType type;
 
 			for (int i = 0; i < headers.Count; i++) {
-				if (icase.Compare (headers[i].Field, "Content-Type") != 0)
+				if (!headers[i].Field.Equals ("Content-Type", StringComparison.OrdinalIgnoreCase))
 					continue;
 
 				if (!ContentType.TryParse (options, headers[i].RawValue, out type) && type == null)
@@ -1448,7 +1447,7 @@ namespace MimeKit {
 					throw new FormatException ("Failed to parse headers.");
 			}
 
-			state = MimeParserState.Complete;
+			state = eos ? MimeParserState.Eos : MimeParserState.Complete;
 
 			var parsed = new HeaderList (options);
 			foreach (var header in headers)
@@ -1568,7 +1567,7 @@ namespace MimeKit {
 				bounds[0].ContentEnd = -1;
 
 				for (int i = 0; i < headers.Count; i++) {
-					if (icase.Compare (headers[i].Field, "Content-Length") != 0)
+					if (!headers[i].Field.Equals ("Content-Length", StringComparison.OrdinalIgnoreCase))
 						continue;
 
 					var value = headers[i].RawValue;

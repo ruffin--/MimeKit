@@ -45,9 +45,10 @@
     <AssemblyOriginatorKeyFile>mimekit.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Portable.Text.Encoding">
-      <HintPath>..\packages\Portable.Text.Encoding.0.8.3.0\lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Portable.Text.Encoding.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\submodules\Portable.Text.Encoding\Portable.Text.Encoding\Portable.Text.Encoding.csproj">
+      <Project>{EEE48C75-11BE-4B50-B759-F85B5052D473}</Project>
+      <Name>Portable.Text.Encoding</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cryptography\MD5.cs" />
@@ -155,10 +156,12 @@
     <Compile Include="HeaderId.cs" />
     <Compile Include="HeaderList.cs" />
     <Compile Include="HeaderListChangedEventArgs.cs" />
+    <Compile Include="HeaderListCollection.cs" />
     <Compile Include="IContentObject.cs" />
     <Compile Include="InternetAddress.cs" />
     <Compile Include="InternetAddressList.cs" />
     <Compile Include="MailboxAddress.cs" />
+    <Compile Include="MessageDeliveryStatus.cs" />
     <Compile Include="MessageDispositionNotification.cs" />
     <Compile Include="MessageIdList.cs" />
     <Compile Include="MessageImportance.cs" />
@@ -183,9 +186,6 @@
     <Compile Include="ParserOptions.cs" />
     <Compile Include="RfcComplianceMode.cs" />
     <Compile Include="TextPart.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
